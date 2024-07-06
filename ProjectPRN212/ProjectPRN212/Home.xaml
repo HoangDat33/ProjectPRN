@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProjectPRN212.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectPRN212"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        Title="Home" Height="800" Width="1450">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Width="700" Margin="0 30 0 0">
+            <Label FontSize="45" FontWeight="Bold" HorizontalAlignment="Center">Trang chủ</Label>
+            <WrapPanel HorizontalAlignment="Center">
+                <StackPanel x:Name="userFunc" Visibility="Collapsed">
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin cá nhân" Click="ProfileDetail_Click"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Quản lý công việc" Click="EmployeeJobs_Click"/>
+                </StackPanel>
+                <StackPanel x:Name="manageFunc" Visibility="Collapsed">
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin cá nhân" Click="ProfileDetail_Click"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin phòng ban" Click="Department_Click"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Quản lý công việc" Click="EmployeeJobs_Click"/>
+                </StackPanel>
+                <StackPanel x:Name="adminFunc" Visibility="Collapsed">
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin cá nhân" Click="ProfileDetail_Click"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách phòng ban"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách trưởng phòng"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách nhân viên"/>
+                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách công việc"/>
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

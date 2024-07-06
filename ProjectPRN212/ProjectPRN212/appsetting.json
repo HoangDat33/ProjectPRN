@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DBContext": "server =localhost; database = Project_PRN212;uid=sa;pwd=12345; TrustServerCertificate=True;"
+  }
+}

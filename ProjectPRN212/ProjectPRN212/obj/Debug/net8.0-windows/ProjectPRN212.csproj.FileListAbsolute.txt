@@ -1,0 +1,8 @@
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.csproj.AssemblyReference.cache
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.baml
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Home.g.cs
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.g.cs
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\App.g.cs
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.cache
+D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.lref
