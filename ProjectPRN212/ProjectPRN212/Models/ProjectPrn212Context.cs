@@ -37,7 +37,7 @@ public partial class ProjectPrn212Context : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
-        var config = new ConfigurationBuilder().AddJsonFile("appseting.json").Build();
+        var config = new ConfigurationBuilder().AddJsonFile("appsetting.json").Build();
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseSqlServer(config.GetConnectionString("DBContext"));

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\
 ProjectPRN212
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\App.xaml
-3376564015
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\App.xaml
+4-2025029536
 
-151967474274
+16539993785
 244-1466373004
-Home.xaml;Login.xaml;MainWindow.xaml;
+Home.xaml;Login.xaml;MainWindow.xaml;UserProfile.xaml;
 
-True
+False
 

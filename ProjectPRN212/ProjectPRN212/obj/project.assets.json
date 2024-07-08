@@ -4487,11 +4487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sem5\\NET\\ProjectDone\\ProjectPRN212\\ProjectPRN212\\ProjectPRN212.csproj",
+      "projectUniqueName": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ProjectPRN212.csproj",
       "projectName": "ProjectPRN212",
-      "projectPath": "D:\\Sem5\\NET\\ProjectDone\\ProjectPRN212\\ProjectPRN212\\ProjectPRN212.csproj",
+      "projectPath": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ProjectPRN212.csproj",
       "packagesPath": "C:\\Users\\Dat\\.nuget\\packages\\",
-      "outputPath": "D:\\Sem5\\NET\\ProjectDone\\ProjectPRN212\\ProjectPRN212\\obj\\",
+      "outputPath": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dat\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -32,14 +32,14 @@ namespace ProjectPRN212
                 string username = txtUsername.Text;
                 string password = txtPassword.Password;
 
-                if(username == null || password == null)
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
                     MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
 
                 Authentication account = ProjectPrn212Context.INSTANCE.Authentications.FirstOrDefault(a => a.Username.Equals(username) && a.PassWord.Equals(password));
-                if (account != null)
+                if (account == null)
                 {
                     MessageBox.Show("Tài khoản không tồn tại!", "Thông báo", MessageBoxButton.OK);
                 }
@@ -72,11 +72,13 @@ namespace ProjectPRN212
                         MessageBox.Show("Không có nhân viên nào sử dụng tài khoản này!", "Thông báo", MessageBoxButton.OK);
                     }
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Đăng nhập lỗi!");
+                MessageBox.Show($"Đăng nhập lỗi! {ex.Message}");
             }
         }
+
 
         private void ExistButton_Click(object sender, RoutedEventArgs e)
         {

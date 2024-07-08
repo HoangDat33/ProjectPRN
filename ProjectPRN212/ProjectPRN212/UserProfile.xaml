@@ -1,0 +1,137 @@
+﻿<Window x:Class="ProjectPRN212.UserProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectPRN212"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        Title="Thông tin cá nhân" Height="800" Width="1450">
+    <Grid Width="1400" Margin="0,30,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Quản lí thông tin cá nhân</Label>
+
+        <GroupBox Header="Thông tin cá nhân" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" FontWeight="DemiBold" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="20">ID:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" FontSize="15" IsReadOnly="True" Margin="10" Height="30" Name="txtID"/>
+                <Label Grid.Row="0" Grid.Column="2" FontSize="20">Email:</Label>
+                <TextBox Grid.Row="0" Grid.Column="3" FontSize="15" Margin="10" Name="txtEmail" Height="30"/>
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="20">Họ:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" FontSize="15" Margin="10" Height="30" Name="txtFirstname"/>
+                <Label Grid.Row="1" Grid.Column="2" FontSize="20">Số điện thoại:</Label>
+                <TextBox Grid.Row="1" Grid.Column="3" FontSize="15" Margin="10" Height="30" Name="txtPhone"/>
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="20">Tên:</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" FontSize="15" Margin="10" Height="30" Name="txtLastname"/>
+                <Label Grid.Row="2" Grid.Column="2" FontSize="20">Mức lương:</Label>
+                <TextBox Grid.Row="2" Grid.Column="3" FontSize="15" IsReadOnly="True" Height="30" Margin="10" Name="txtSalary"/>
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="20">Giới tính:</Label>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10">
+                    <RadioButton Content="Nam" Name="radioMale" FontSize="20" GroupName="GenderGroup" Margin="0,0,20,0"/>
+                    <RadioButton Content="Nữ" Name="radioFemale" FontSize="20" GroupName="GenderGroup"/>
+                </StackPanel>
+                <Label Grid.Row="3" Grid.Column="2" FontSize="20">Ngày sinh:</Label>
+                <DatePicker Grid.Row="3" Grid.Column="3" Name="txtBirthdate" FontSize="15" Width="440" Height="35" Margin="10"/>
+
+                <Label Grid.Row="4" Grid.Column="0" FontSize="20">Địa chỉ:</Label>
+                <TextBox Grid.Row="4" Grid.Column="1" FontSize="15" Margin="10" Height="30" Name="txtAddress"/>
+                <Label Grid.Row="4" Grid.Column="2" FontSize="20">Ví trí làm việc:</Label>
+                <ComboBox Name="cbbPosition" Width="440" Height="30" Grid.Row="4" Grid.Column="3" Margin="10" FontSize="15"/>
+
+                <Label Grid.Row="5" Grid.Column="0" FontSize="20">Phòng ban:</Label>
+                <ComboBox Name="cbbDepartment" Width="440" Height="30" Grid.Row="5" Grid.Column="1" Margin="10" FontSize="15" SelectionChanged="cbbDepartment_SelectionChanged"/>
+                <Label Grid.Row="5" Grid.Column="2" FontSize="20">Quản lí:</Label>
+                <ComboBox Name="cbbManager" Width="440" Height="30" Grid.Row="5" Grid.Column="3" Margin="10" FontSize="15" SelectionChanged="cbbManager_SelectionChanged"/>
+
+                <Label Grid.Row="6" Grid.Column="0" FontSize="20">Ngày đăng kí:</Label>
+                <TextBox Grid.Row="6" Grid.Column="1" FontSize="15" IsReadOnly="True" Height="30" Margin="10" Name="txtCreatedAt"/>
+                <Label Grid.Row="6" Grid.Column="2" FontSize="20">Trạng thái tài khoản:</Label>
+                <StackPanel Grid.Row="6" Grid.Column="3" Orientation="Horizontal" Margin="10">
+                    <RadioButton Content="Đang hoạt động" Name="radioActive" FontSize="20" GroupName="StatusGroup" Margin="0,0,20,0"/>
+                    <RadioButton Content="Ngừng hoạt động" Name="radioNonactive" FontSize="20" GroupName="StatusGroup"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10">
+            <Button Visibility="Visible" Name="btnUpdateEmployee" Content="Câp nhật" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="UpdateProfile_Click"/>
+            <Button Visibility="Collapsed" Name="btnAddEmployee" Content="Thêm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="btnAddEmployee_Click"/>
+            <Button Visibility="Collapsed" Name="btnDeleteEmployee" Content="Xóa" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="btnDeleteEmployee_Click"/>
+        </StackPanel>
+
+        <GroupBox Header="Thông tin đăng nhập" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" FontWeight="DemiBold" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="20">Tài khoản:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" FontSize="15" Height="30" IsReadOnly="True" Margin="10" Name="txtUsername"/>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="20">Mật khẩu cũ:</Label>
+                <PasswordBox Grid.Row="1" Grid.Column="1" FontSize="15" Height="30" Margin="10" Name="txtOldpassword"/>
+                <Label Grid.Row="2" Grid.Column="0" FontSize="20">Mật khẩu mới:</Label>
+                <PasswordBox Grid.Row="2" Grid.Column="1" FontSize="15" Height="30" Margin="10" Name="txtNewpassword"/>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="20">Xác nhận mật khẩu:</Label>
+                <PasswordBox Grid.Row="3" Grid.Column="1" FontSize="15" Height="30" Margin="10" Name="txtRepassword"/>
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Row="4" Grid.Column="1" Content="Đổi mật khẩu" Width="150" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,4,158,16" Click="Changepassword_Click" Grid.ColumnSpan="2"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,15,0">
+            <Button Content="Trang chủ" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoHome_Click"/>
+            <Button Content="Đăng xuất" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Logout_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

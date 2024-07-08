@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectPRN212.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,33 @@ namespace ProjectPRN212
         {
             InitializeComponent();
         }
+        Employee em = new Employee();
+        public Home(Employee employee)
+        {
+            InitializeComponent();
+            em = employee;
+            if(em != null)
+            {
+                if(em.RoleId == 1)
+                {
+                    adminFunc.Visibility = Visibility.Visible;
+                }else if(em.RoleId == 2)
+                {
+                    userFunc.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    manageFunc.Visibility = Visibility.Visible;
+                }
+            }
+        }
 
         private void ProfileDetail_Click(object sender, RoutedEventArgs e)
         {
-
+            UserProfile userProfile = new UserProfile(em);
+            this.Hide();
+            userProfile.Show();
+            this.Close();
         }
 
         private void Department_Click(object sender, RoutedEventArgs e)
@@ -37,6 +61,17 @@ namespace ProjectPRN212
         private void EmployeeJobs_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất?","Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Login login = new Login();
+                this.Hide();
+                login.Show();
+                this.Close();
+            }
         }
     }
 }
