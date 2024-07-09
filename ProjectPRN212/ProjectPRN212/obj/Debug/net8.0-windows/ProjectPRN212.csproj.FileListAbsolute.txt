@@ -1,16 +1,9 @@
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.csproj.AssemblyReference.cache
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.baml
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Home.g.cs
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.g.cs
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\MainWindow.g.cs
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\App.g.cs
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.cache
-D:\Sem5\NET\ProjectDone\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.lref
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.csproj.AssemblyReference.cache
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.baml
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\EmployeeJobs.g.cs
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Home.g.cs
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Login.g.cs
-D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\UserProfile.g.cs
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\App.g.cs
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.cache
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212_MarkupCompile.lref
@@ -138,8 +131,9 @@ D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\bin\Debug\net8.0-windows\runt
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\EmployeeJobs.baml
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\Home.baml
-D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\MainWindow.baml
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\UserProfile.baml
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.g.resources
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.GeneratedMSBuildEditorConfig.editorconfig
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.AssemblyInfoInputs.cache
@@ -152,5 +146,3 @@ D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\refi
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.pdb
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.genruntimeconfig.cache
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ref\ProjectPRN212.dll
-D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\UserProfile.g.cs
-D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\UserProfile.baml

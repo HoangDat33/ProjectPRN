@@ -1,4 +1,5 @@
-﻿using ProjectPRN212.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using ProjectPRN212.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace ProjectPRN212
             em = employee;
             radioActive.IsEnabled = false;
             radioNonactive.IsEnabled = false;
-            if(em.RoleId == 1)
+            if (em.RoleId == 1)
             {
                 txtSalary.IsReadOnly = false;
             }
@@ -148,7 +149,7 @@ namespace ProjectPRN212
 
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
-            if(em != null)
+            if (em != null)
             {
                 Home home = new Home(em);
                 this.Hide();
@@ -170,12 +171,73 @@ namespace ProjectPRN212
 
         private void Changepassword_Click(object sender, RoutedEventArgs e)
         {
+            string password = txtOldpassword.Password;
+            string newpassword = txtNewpassword.Password;
+            string repassword = txtRepassword.Password;
 
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng điền mật khẩu!", "Thông báo");
+                return;
+            }
+            if (string.IsNullOrEmpty(newpassword))
+            {
+                MessageBox.Show("Vui lòng điền mật khẩu mới!", "Thông báo");
+                return;
+            }
+            if (string.IsNullOrEmpty(repassword))
+            {
+                MessageBox.Show("Vui lòng điền xác nhận mật khẩu!", "Thông báo");
+                return;
+            }
+
+            var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
+
+            if (authentication != null)
+            {
+                if (!password.Equals(authentication.PassWord))
+                {
+                    MessageBox.Show("Mật khẩu cũ không chính xác!", "Thông báo");
+                    return;
+                }
+
+                if (!newpassword.Equals(repassword))
+                {
+                    MessageBox.Show("Vui lòng điền 'Xác nhận mật khẩu' giống với 'Mật khẩu mới'!", "Thông báo");
+                    return;
+                }
+
+                if (MessageBox.Show("Bạn chắc chắn muốn đổi mật khẩu?", "Thông bảo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    authentication.PassWord = newpassword;
+                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                    {
+                        MessageBox.Show("Cập nhật mật khẩu thành công!", "Thông báo");
+                        ClearChangePassWord();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật mật khẩu không thành công!", "Thông báo");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi không tìm thấy tài khoản cho người dùng này, vui lòng thử lại sau!", "Thông báo");
+            }
+        }
+
+
+        private void ClearChangePassWord()
+        {
+            txtOldpassword.Clear();
+            txtNewpassword.Clear();
+            txtRepassword.Clear();
         }
 
         private void UpdateProfile_Click(object sender, RoutedEventArgs e)
         {
-            if(em.RoleId == 1)
+            if (em.RoleId == 1)
             {
                 string email = txtEmail.Text;
                 string fname = txtFirstname.Text;
@@ -195,7 +257,7 @@ namespace ProjectPRN212
                     gender = false;
                 }
                 bool status = false;
-                if(radioActive.IsChecked == false)
+                if (radioActive.IsChecked == false)
                 {
                     status = false;
                 }
@@ -203,16 +265,16 @@ namespace ProjectPRN212
                 {
                     status = true;
                 }
-                
 
-                if(!double.TryParse(txtSalary.Text, out double salary))
+
+                if (!double.TryParse(txtSalary.Text, out double salary))
                 {
                     MessageBox.Show("Nhập lương nhân viên!", "Thông báo");
                     return;
                 }
 
                 var selectedDepart = cbbDepartment.SelectedItem as Department;
-                if(selectedDepart == null)
+                if (selectedDepart == null)
                 {
                     MessageBox.Show("Lựa chọn phòng ban!", "Thông báo");
                     return;
@@ -220,27 +282,27 @@ namespace ProjectPRN212
                 int idDepart = selectedDepart.Id;
 
                 var selectedPosition = cbbPosition.SelectedItem as Position;
-                if(selectedPosition == null)
+                if (selectedPosition == null)
                 {
                     MessageBox.Show("Chọn vị trí công việc!", "Thông báo");
                     return;
                 }
                 int idPosition = selectedPosition.Id;
-                if(idPosition == 1 && em.PositionId != 1 && em.ManagerId != em.Id)
+                if (idPosition == 1 && em.PositionId != 1 && em.ManagerId != em.Id)
                 {
-                    if(MessageBox.Show("Giao cho nhân viên " + em.FirstName + " " + em.LastName + " thành trưởng phòng?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Giao cho nhân viên " + em.FirstName + " " + em.LastName + " thành trưởng phòng?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         var changeManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Id == em.ManagerId).SingleOrDefault();
                         List<Employee> chageAllManager = new List<Employee>();
-                        if(changeManager != null)
+                        if (changeManager != null)
                         {
                             chageAllManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.ManagerId == changeManager.Id).ToList();
                         }
                         else
                         {
-                            chageAllManager = ProjectPrn212Context.INSTANCE.Employees.Where(e  => e.DepartmentId == idDepart).ToList();
+                            chageAllManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == idDepart).ToList();
                         }
-                        if(changeManager != null)
+                        if (changeManager != null)
                         {
                             changeManager.PositionId = 2;
                             changeManager.ManagerId = em.Id;
@@ -248,13 +310,13 @@ namespace ProjectPRN212
                             ProjectPrn212Context.INSTANCE.Employees.Update(changeManager);
                             ProjectPrn212Context.INSTANCE.SaveChanges();
                         }
-                        if(chageAllManager != null)
+                        if (chageAllManager != null)
                         {
                             chageAllManager.ForEach(e => { e.ManagerId = em.Id; });
                         }
                     }
                     var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
-                    if(employeeUpdate != null)
+                    if (employeeUpdate != null)
                     {
                         employeeUpdate.FirstName = fname;
                         employeeUpdate.LastName = lname;
@@ -286,7 +348,7 @@ namespace ProjectPRN212
                     var selectedManager = cbbManager.SelectedItem as Employee;
                     int idManager = selectedManager.Id;
                     var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
-                    if(employeeUpdate != null)
+                    if (employeeUpdate != null)
                     {
                         employeeUpdate.FirstName = fname;
                         employeeUpdate.LastName = lname;
@@ -350,15 +412,6 @@ namespace ProjectPRN212
             }
         }
 
-        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnDeleteEmployee_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void cbbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

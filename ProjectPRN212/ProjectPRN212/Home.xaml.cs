@@ -29,12 +29,13 @@ namespace ProjectPRN212
         {
             InitializeComponent();
             em = employee;
-            if(em != null)
+            if (em != null)
             {
-                if(em.RoleId == 1)
+                if (em.RoleId == 1)
                 {
                     adminFunc.Visibility = Visibility.Visible;
-                }else if(em.RoleId == 2)
+                }
+                else if (em.RoleId == 2)
                 {
                     userFunc.Visibility = Visibility.Visible;
                 }
@@ -60,18 +61,29 @@ namespace ProjectPRN212
 
         private void EmployeeJobs_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeeJobs employeejobs = new EmployeeJobs(em);
+            this.Hide();
+            employeejobs.ShowDialog();
+            this.Close();
         }
 
         private void Logout(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc muốn đăng xuất?","Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Login login = new Login();
                 this.Hide();
                 login.Show();
                 this.Close();
             }
+        }
+
+        private void EmployeeList_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeJobs employeejobs = new EmployeeJobs(em);
+            this.Hide();
+            employeejobs.ShowDialog();
+            this.Close();
         }
     }
 }

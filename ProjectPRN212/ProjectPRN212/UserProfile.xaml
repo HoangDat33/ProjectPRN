@@ -99,8 +99,6 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10">
             <Button Visibility="Visible" Name="btnUpdateEmployee" Content="Câp nhật" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="UpdateProfile_Click"/>
-            <Button Visibility="Collapsed" Name="btnAddEmployee" Content="Thêm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="btnAddEmployee_Click"/>
-            <Button Visibility="Collapsed" Name="btnDeleteEmployee" Content="Xóa" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="10" Click="btnDeleteEmployee_Click"/>
         </StackPanel>
 
         <GroupBox Header="Thông tin đăng nhập" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" FontWeight="DemiBold" Margin="10">

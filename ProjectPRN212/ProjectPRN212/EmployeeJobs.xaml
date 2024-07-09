@@ -1,0 +1,113 @@
+﻿<Window x:Class="ProjectPRN212.EmployeeJobs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectPRN212"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        Title="Quản lý công việc" Height="800" Width="1450">
+    <Grid Margin="40 30 40 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Quản lý công việc</Label>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" >
+            <Button Content="Quay lại" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoBack_Click"/>
+            <Button Content="Trang chủ" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoHome_Click"/>
+            <Button Content="Đăng xuất" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Logout_Click" />
+        </StackPanel>
+
+        <GroupBox Header="Danh sách công việc" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Grid.ColumnSpan="4" FontWeight="DemiBold" FontSize="20">
+            <DataGrid x:Name="dgEmJobs" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="4" FontSize="15"></DataGrid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="50,0,50,0">
+            <Label Margin="50,5,10,5" FontSize="18">Tìm kiếm:</Label>
+            <TextBox Name="txtDatasearch" Width="200" Height="30" FontSize="15" TextChanged="txtDatasearch_TextChanged"/>
+            <Label Margin="50,5,10,5" FontSize="15">Trạng thái công việc:</Label>
+            <ComboBox Name="cbbFilterJobStatus" Width="200" Height="30" Margin="10,5,50,5" FontSize="15" SelectionChanged="cbbFilterJobStatus_SelectionChanged" ></ComboBox>
+
+            <Button Name="btnAllWork" Content="Tất cả công việc" FontSize="15" Width="150" Height="30" Margin="10,5,10,5" Visibility="Collapsed" Click="AllJobOfDepartment_Click" />
+            <Button Name="btnIndiWork" Content="Công việc của tôi" FontSize="15" Width="150" Height="30" Margin="10,5,10,5" Visibility="Collapsed" Click="MyJobs_Click" />
+            <CheckBox x:Name="cbAllJob" Content="Tất cả công việc" FontSize="15" Width="200" Height="30" Margin="10,5,10,5" Visibility="Collapsed" IsChecked="False" Padding="5" BorderThickness="12,8,12,8" Checked="cbAllJob_Checked" />
+            <CheckBox x:Name="cbIndiJob" Content="Công việc cá nhân" FontSize="15" Width="200" Height="30" Margin="10,5,10,5" Visibility="Collapsed" IsChecked="False" Padding="5" BorderThickness="12,8,12,8" Checked="cbIndiJob_Checked" />
+        </StackPanel>
+        <GroupBox Header="Chi tiết công việc" Grid.Row="9" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="4" FontWeight="DemiBold" FontSize="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" FontSize="18">Mã công việc:</Label>
+                <TextBox Name="txtJobID" IsReadOnly="True" Grid.Row="0" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.JobID, Mode=OneWay}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="18">Mã công việc | nhân viên:</Label>
+                <TextBox Name="txtEmployeeJobID" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.ID, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="18">Tên công việc:</Label>
+                <TextBox Name="txtJobName" Grid.Row="2" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.JobName, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="18">Mô tả:</Label>
+                <TextBox Name="txtDesription" Grid.Row="3" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.Description, Mode=OneWay}"/>
+
+                <Label Grid.Row="4" Grid.Column="0" FontSize="18">Trạng thái:</Label>
+                <ComboBox Name="cbbStatus" Grid.Row="4" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Width="462" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.Status, Mode=OneWay}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" FontSize="18">Người giao việc:</Label>
+                <ComboBox Name="cbbSelectAssign" Grid.Row="0" Grid.Column="3" Height="30" Width="462" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.AssignBy, Mode=OneWay}"/>
+
+                <Label Grid.Row="1" Grid.Column="2" FontSize="18">Nhân viên phụ trách:</Label>
+                <ComboBox Name="cbbSelectEmployee" Grid.Row="1" Grid.Column="3" Height="30" Width="462" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.EmployeeName, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="2" FontSize="18">Ngày bắt đầu:</Label>
+                <DatePicker Name="txtStartDate" Grid.Row="2" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.StartDate, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="2" FontSize="18">Ngày kết thúc:</Label>
+                <DatePicker Name="txtEndDate" Grid.Row="3" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.EndDate, Mode=OneWay}"/>
+
+                <Label Grid.Row="4" Grid.Column="2" FontSize="18">Ngày giao việc:</Label>
+                <DatePicker Name="txtAssignDate" Grid.Row="4" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgEmployeeJobs,Path=SelectedItem.AssigmentDate, Mode=OneWay}"/>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="15" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Cập nhật" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="UpdateJob_Click"/>
+            <Button Content="Thêm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="AddNewJob_Click"/>
+            <Button Content="Xóa" Width="100" Height="30"  FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="DeleteJob_Click"/>
+            <Button Content="Làm mới" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Clear_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

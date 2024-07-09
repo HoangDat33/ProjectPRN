@@ -18,15 +18,12 @@
                 </StackPanel>
                 <StackPanel x:Name="manageFunc" Visibility="Collapsed">
                     <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin cá nhân" Click="ProfileDetail_Click"/>
-                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin phòng ban" Click="Department_Click"/>
                     <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Quản lý công việc" Click="EmployeeJobs_Click"/>
                 </StackPanel>
                 <StackPanel x:Name="adminFunc" Visibility="Collapsed">
                     <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Thông tin cá nhân" Click="ProfileDetail_Click"/>
                     <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách phòng ban"/>
-                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách trưởng phòng"/>
                     <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách nhân viên"/>
-                    <Button Width="400" Height="50" Margin="20" FontSize="25" Content="Danh sách công việc"/>
                 </StackPanel>
             </WrapPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
