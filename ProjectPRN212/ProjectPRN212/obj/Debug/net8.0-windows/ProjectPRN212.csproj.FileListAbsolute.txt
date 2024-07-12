@@ -146,3 +146,5 @@ D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\refi
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.pdb
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ProjectPRN212.genruntimeconfig.cache
 D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ref\ProjectPRN212.dll
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ManageDepartment.g.cs
+D:\Sem5\NET\ProjectPRN\ProjectPRN212\ProjectPRN212\obj\Debug\net8.0-windows\ManageDepartment.baml

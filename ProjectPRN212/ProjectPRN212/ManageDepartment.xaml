@@ -1,0 +1,111 @@
+﻿<Window x:Class="ProjectPRN212.ManageDepartment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectPRN212"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        Title="Quản lý phòng ban"  Height="800" Width="1450">
+    <Grid Margin="40,30,40,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="195*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Quản lý phòng ban</Label>
+        <StackPanel Orientation="Horizontal" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Button Content="Quay lại" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoBack_Click"/>
+            <Button Content="Trang chủ" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoHome_Click"/>
+            <Button Content="Đăng xuất" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Logout_Click" />
+        </StackPanel>
+        <GroupBox Header="Danh sách phòng ban:" Grid.Row="1" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="4" FontWeight="DemiBold" FontSize="20">
+            <DataGrid Name="dgDepartment" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="7" FontSize="15" SelectionChanged="dgDepartment_SelectionChanged" ></DataGrid>
+        </GroupBox>
+        
+        <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Margin="10,5,10,5" FontSize="15">Tìm kiếm:</Label>
+            <TextBox Name="txtDatasearch" Width="200" Height="30" FontSize="15" />
+            <Button Content="Tìm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Search_Click" />
+
+            <Label Margin="10,5,10,5" FontSize="15">Lọc:</Label>
+            <ComboBox Name="cbbFilterStatus" Width="150" Height="30" Margin="10,5,10,5" FontSize="15" SelectionChanged="cbbFilterEmployeeStatus_SelectionChanged" >
+                <ComboBoxItem Content="Đang hoạt động"/>
+                <ComboBoxItem Content="Ngừng hoạt động"/>
+            </ComboBox>
+            <CheckBox x:Name="cbAllDepartment" Content="Tất cả phòng ban" FontSize="15" Width="170" Height="30" Margin="10,5,10,5" IsChecked="False" Padding="5" BorderThickness="12,8,12,8" Checked="cbAllEmployee_Checked" />
+        </StackPanel>
+        <GroupBox Header="Chi tiết phòng ban" Grid.Row="10" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="4" FontWeight="DemiBold" FontSize="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" FontSize="18">ID:</Label>
+                <TextBox Name="txtDepartmentID" IsReadOnly="True" Grid.Row="0" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.DepartmentID, Mode=OneWay}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="18">Phòng ban:</Label>
+                <TextBox Name="txtDepartmentName" Grid.Row="1" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.Name, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="18">Mô tả:</Label>
+                <TextBox Name="txtDescription" Grid.Row="2" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.Description, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="18">Trạng thái hoạt động:</Label>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+                    <RadioButton Content="Đang hoạt động" Name="radioActive" Margin="10" FontSize="20" GroupName="StatusGroup"/>
+                    <RadioButton Content="Ngừng hoạt động" Name="radioInactive" Margin="40,10,0,0" FontSize="20" GroupName="StatusGroup"/>
+                </StackPanel>
+
+                <Label Grid.Row="0" Grid.Column="2" FontSize="18">Quản lí:</Label>
+                <ComboBox Name="cbbManager" Width="462"  Grid.Row="0" Grid.Column="3" Height="30" Margin="10,0,10,0" FontSize="15" IsEnabled="true" SelectionChanged="cbbManager_SelectionChanged" ></ComboBox>
+
+                <Label Grid.Row="1" Grid.Column="2" FontSize="18">Email quản lí:</Label>
+                <TextBox Name="txtEmail" Grid.Row="1" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.ManagerEmail, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="2" FontSize="18">Ngày tạo:</Label>
+                <TextBox Name="dpCreatedAt" IsReadOnly="True" Grid.Row="2" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.CreatedAt, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="2" FontSize="18">Ngày cập nhật:</Label>
+                <TextBox Name="dpUpdatedAt" IsReadOnly="True" Grid.Row="3" Grid.Column="3" Height="30" FontSize="15" Margin="10,0,10,0" Text="{Binding ElementName=dgDepartment,Path=SelectedItem.UpdatedAt, Mode=OneWay}"/>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Name="btnUpdateDepartment" Content="Câp nhật" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnUpdateDepartment_Click" />
+            <Button Name="btnAddDepartment" Content="Thêm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnAddDepartment_Click"  />
+            <Button Name="btnDeleteDepartment" Content="Xóa" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnDeleteDepartment_Click"  />
+            <Button Name="btnClear" Content="Làm mới" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnClear_Click"  />
+        </StackPanel>
+
+    </Grid>
+</Window>

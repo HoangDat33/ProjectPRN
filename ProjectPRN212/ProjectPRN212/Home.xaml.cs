@@ -85,5 +85,13 @@ namespace ProjectPRN212
             employeejobs.ShowDialog();
             this.Close();
         }
+
+        private void ManageDepart_Click(object sender, RoutedEventArgs e)
+        {
+            ManageDepartment manageDepartment = new ManageDepartment(em);
+            this.Hide();
+            manageDepartment.ShowDialog();
+            this.Close();
+        }
     }
 }
