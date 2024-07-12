@@ -1,4 +1,5 @@
-﻿using ProjectPRN212.Models;
+﻿using Microsoft.VisualBasic;
+using ProjectPRN212.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -327,7 +328,131 @@ namespace ProjectPRN212
 
         private void UpdateJob_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string jobID = txtJobID.Text;
+                if (!int.TryParse(jobID, out int jobIDInt))
+                {
+                    MessageBox.Show("Không tồn tại JobID!", "Thông báo");
+                    return;
+                }
 
+                //Data bảng employeeJobs:
+                string employeeJobId = txtEmployeeJobID.Text;
+                if (!int.TryParse(employeeJobId, out int employeeJobIdInt))
+                {
+                    MessageBox.Show("Không tồn tại EmployeeJobID!", "Thông báo");
+                    return;
+                }
+
+                DateOnly assignmentDate = DateOnly.FromDateTime(txtAssignDate.SelectedDate.Value);
+                int idEmployee = (int)cbbSelectEmployee.SelectedValue;
+
+                //Data bảng jobs:
+                string jobName = txtJobName.Text;
+                string jobDescription = txtDesription.Text;
+                //(int)cbbStatus.SelectedValue;
+                JobStatus selectedJobStatus = cbbStatus.SelectedItem as JobStatus;
+                int idStatus = 0;
+                if (selectedJobStatus != null)
+                {
+                    idStatus = selectedJobStatus.Id;
+                }
+
+                int idAssignBy = em.Id;
+
+                DateOnly startDate = DateOnly.FromDateTime(txtStartDate.SelectedDate.Value);
+                DateOnly endDate = DateOnly.FromDateTime(txtEndDate.SelectedDate.Value);
+
+
+                if (string.IsNullOrWhiteSpace(jobName))
+                {
+                    MessageBox.Show("Vui lòng nhập tên công việc!", "Thông báo");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(jobDescription))
+                {
+                    MessageBox.Show("Vui lòng nhập mô tả công việc!", "Thông báo");
+                    return;
+                }
+
+                if (idStatus == 0)
+                {
+                    MessageBox.Show("Vui lòng lựa chọn trạng thái công việc!", "Thông báo");
+                    return;
+                }
+
+                if (idEmployee == 0)
+                {
+                    MessageBox.Show("Vui lòng lựa chọn nhân viên đảm nhận công việc!", "Thông báo");
+                    return;
+                }
+
+                if (startDate == null)
+                {
+                    MessageBox.Show("Vui lòng lựa chọn ngày bắt đầu công việc!", "Thông báo");
+                    return;
+                }
+
+                if (endDate == null)
+                {
+                    MessageBox.Show("Vui lòng lựa chọn ngày kết thúc công việc!", "Thông báo");
+                    return;
+                }
+
+                if (assignmentDate == null)
+                {
+                    MessageBox.Show("Vui lòng lựa chọn ngày giao việc!", "Thông báo");
+                    return;
+                }
+
+                //update bảng job;
+                Job job = ProjectPrn212Context.INSTANCE.Jobs.SingleOrDefault(j => j.Id == jobIDInt);
+                if (job != null)
+                {
+                    job.Title = jobName;
+                    job.Description = jobDescription;
+                    job.StartDate = startDate;
+                    job.EndDate = endDate;
+                    job.AssignedBy = idAssignBy;
+                    job.JobStatusId = idStatus;
+                    job.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                }
+
+
+
+                //update bảng employeeJob
+                EmployeeJob employeeJob = ProjectPrn212Context.INSTANCE.EmployeeJobs.SingleOrDefault(j => j.EmployeeJobId == employeeJobIdInt);
+                if (employeeJob != null)
+                {
+                    employeeJob.EmployeeId = idEmployee;
+                    employeeJob.AssignmentDate = assignmentDate;
+                    employeeJob.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                }
+
+                if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                {
+                    MessageBox.Show("Cập nhật dữ liệu công việc thành công!", "Thông báo");
+                    if (em.RoleId == 3)
+                    {
+                        LoadDataJobs();
+                    }
+                    else
+                    {
+                        LoadIndiJobs();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật dữ liệu thất bại!", "Thông báo");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cập nhật dữ liệu thất bại!" + ex.Message, "Thông báo");
+            }
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
