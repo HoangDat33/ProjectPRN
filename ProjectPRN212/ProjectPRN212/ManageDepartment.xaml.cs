@@ -234,7 +234,7 @@ namespace ProjectPRN212
                             if (MessageBox.Show("Thay thế trưởng phòng \"" + manageCurrent.FirstName + " " + manageCurrent.LastName + "\" thành \"" + manageFuture.FirstName + " " + manageFuture.LastName + "\"?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                             {
                                 //Bãi nhiệm:
-                                manageCurrent.PositionId = null;
+                                manageCurrent.PositionId = 1;
                                 manageCurrent.RoleId = 2; //role nhân viên
                                 manageCurrent.ManagerId = manageFuture.Id;
                                 ProjectPrn212Context.INSTANCE.Employees.Update(manageCurrent);
@@ -262,7 +262,7 @@ namespace ProjectPRN212
                             if (MessageBox.Show("\"" + manageFuture.FirstName + " " + manageFuture.LastName + "\" hiện đang là trưởng phòng của phòng của 1 phòng ban khác, xác nhận thay thế ?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                             {
                                 //Bãi nhiệm:
-                                manageCurrent.PositionId = null;
+                                manageCurrent.PositionId = 1;
                                 manageCurrent.RoleId = 2; //role nhân viên
                                 manageCurrent.ManagerId = manageFuture.Id;
                                 ProjectPrn212Context.INSTANCE.Employees.Update(manageCurrent);
@@ -282,7 +282,7 @@ namespace ProjectPRN212
                                 var employeeOfDepart = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == departmentId).ToList();
                                 employeeOfDepart.ForEach(e => e.ManagerId = manageFuture.Id);
                                 employeeOfDepart.ForEach(e => ProjectPrn212Context.INSTANCE.Employees.Update(e));
-
+                                cbbManager.SelectedItem = manageFuture;
                             }
                             else
                             {

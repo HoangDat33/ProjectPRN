@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\managedepartment.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\employeejobs.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\employeejobs.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\managedepartment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\managedepartment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -26,11 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 99,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Home.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Home.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\Home.xaml",
@@ -42,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Home.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Home.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\Home.xaml.cs",
@@ -51,8 +55,7 @@
               "ViewState": "AQIAADoAAAAAAAAAAAAAwFoAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-05T07:50:12.01Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -68,28 +71,40 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeJobs.xaml.cs",
+              "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\EmployeeJobs.xaml.cs",
+              "RelativeDocumentMoniker": "ProjectPRN212\\EmployeeJobs.xaml.cs",
+              "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\EmployeeJobs.xaml.cs",
+              "RelativeToolTip": "ProjectPRN212\\EmployeeJobs.xaml.cs",
+              "ViewState": "AQIAALkBAAAAAAAAAAAAAEoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T00:53:39.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ManageDepartment.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\ManageDepartment.xaml.cs",
               "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml.cs",
               "RelativeToolTip": "ProjectPRN212\\ManageDepartment.xaml.cs",
-              "ViewState": "AQIAAPMAAAAAAAAAAAAAAC4BAAA1AAAA",
+              "ViewState": "AQIAAAcBAAAAAAAAAAAIwBwBAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-12T15:29:23.113Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ManageDepartment.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\ManageDepartment.xaml",
               "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml",
               "RelativeToolTip": "ProjectPRN212\\ManageDepartment.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-12T15:11:50.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-12T15:11:50.567Z"
             }
           ]
         },
