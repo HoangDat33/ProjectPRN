@@ -26,6 +26,7 @@ namespace ProjectPRN212
             InitializeComponent();
         }
         Employee em;
+        Employee emAD;
         public UserProfile(Employee employee)
         {
             InitializeComponent();
@@ -35,6 +36,23 @@ namespace ProjectPRN212
             if (em.RoleId == 1)
             {
                 txtSalary.IsReadOnly = false;
+            }
+            LoadData(em.Id);
+            LoadDataAccount();
+        }
+        public UserProfile(Employee adEm, Employee employee)
+        {
+            InitializeComponent();
+            em = employee;
+            emAD = adEm;
+            radioActive.IsEnabled = false;
+            radioNonactive.IsEnabled = false;
+            if (em.RoleId == 1 || emAD.RoleId == 1)
+            {
+                txtSalary.IsReadOnly = false;
+                radioActive.IsEnabled = true;
+                radioNonactive.IsEnabled = true;
+                btnAddEmployee.Visibility = Visibility.Visible;
             }
             LoadData(em.Id);
             LoadDataAccount();
@@ -108,7 +126,7 @@ namespace ProjectPRN212
             var employ = ProjectPrn212Context.INSTANCE.Employees.SingleOrDefault(e => e.Id == em.Id);
             if (employ != null)
             {
-                if (employ.RoleId == 1)
+                if (employ.RoleId == 1 || emAD != null)
                 {
                     cbbDepartment.ItemsSource = ProjectPrn212Context.INSTANCE.Departments.ToList();
                     cbbPosition.ItemsSource = ProjectPrn212Context.INSTANCE.Positions.ToList();
@@ -149,9 +167,16 @@ namespace ProjectPRN212
 
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
-            if (em != null)
+            if (em != null && emAD == null)
             {
                 Home home = new Home(em);
+                this.Hide();
+                home.Show();
+                this.Close();
+            }
+            else
+            {
+                Home home = new Home(emAD);
                 this.Hide();
                 home.Show();
                 this.Close();
@@ -174,57 +199,101 @@ namespace ProjectPRN212
             string password = txtOldpassword.Password;
             string newpassword = txtNewpassword.Password;
             string repassword = txtRepassword.Password;
-
-            if (string.IsNullOrEmpty(password))
+            if (emAD != null)
             {
-                MessageBox.Show("Vui lòng điền mật khẩu!", "Thông báo");
-                return;
-            }
-            if (string.IsNullOrEmpty(newpassword))
-            {
-                MessageBox.Show("Vui lòng điền mật khẩu mới!", "Thông báo");
-                return;
-            }
-            if (string.IsNullOrEmpty(repassword))
-            {
-                MessageBox.Show("Vui lòng điền xác nhận mật khẩu!", "Thông báo");
-                return;
-            }
-
-            var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
-
-            if (authentication != null)
-            {
-                if (!password.Equals(authentication.PassWord))
+                if (string.IsNullOrEmpty(newpassword))
                 {
-                    MessageBox.Show("Mật khẩu cũ không chính xác!", "Thông báo");
+                    MessageBox.Show("Vui lòng điền mật khẩu mới!", "Thông báo");
                     return;
                 }
-
-                if (!newpassword.Equals(repassword))
+                if (string.IsNullOrEmpty(repassword))
                 {
-                    MessageBox.Show("Vui lòng điền 'Xác nhận mật khẩu' giống với 'Mật khẩu mới'!", "Thông báo");
+                    MessageBox.Show("Vui lòng điền xác nhận mật khẩu!", "Thông báo");
                     return;
                 }
+                var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
 
-                if (MessageBox.Show("Bạn chắc chắn muốn đổi mật khẩu?", "Thông bảo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (authentication != null)
                 {
-                    authentication.PassWord = newpassword;
-                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                    if (!newpassword.Equals(repassword))
                     {
-                        MessageBox.Show("Cập nhật mật khẩu thành công!", "Thông báo");
-                        ClearChangePassWord();
+                        MessageBox.Show("Vui lòng điền 'Xác nhận mật khẩu' giống với 'Mật khẩu mới'!", "Thông báo");
+                        return;
                     }
-                    else
+
+                    if (MessageBox.Show("Bạn chắc chắn muốn đổi mật khẩu?", "Thông bảo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        MessageBox.Show("Cập nhật mật khẩu không thành công!", "Thông báo");
+                        authentication.PassWord = newpassword;
+                        if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu thành công!", "Thông báo");
+                            ClearChangePassWord();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu không thành công!", "Thông báo");
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi không tìm thấy tài khoản cho người dùng này, vui lòng thử lại sau!", "Thông báo");
                 }
             }
             else
             {
-                MessageBox.Show("Lỗi không tìm thấy tài khoản cho người dùng này, vui lòng thử lại sau!", "Thông báo");
+                if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Vui lòng điền mật khẩu!", "Thông báo");
+                    return;
+                }
+                if (string.IsNullOrEmpty(newpassword))
+                {
+                    MessageBox.Show("Vui lòng điền mật khẩu mới!", "Thông báo");
+                    return;
+                }
+                if (string.IsNullOrEmpty(repassword))
+                {
+                    MessageBox.Show("Vui lòng điền xác nhận mật khẩu!", "Thông báo");
+                    return;
+                }
+
+                var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
+
+                if (authentication != null)
+                {
+                    if (!password.Equals(authentication.PassWord))
+                    {
+                        MessageBox.Show("Mật khẩu cũ không chính xác!", "Thông báo");
+                        return;
+                    }
+
+                    if (!newpassword.Equals(repassword))
+                    {
+                        MessageBox.Show("Vui lòng điền 'Xác nhận mật khẩu' giống với 'Mật khẩu mới'!", "Thông báo");
+                        return;
+                    }
+
+                    if (MessageBox.Show("Bạn chắc chắn muốn đổi mật khẩu?", "Thông bảo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        authentication.PassWord = newpassword;
+                        if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu thành công!", "Thông báo");
+                            ClearChangePassWord();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu không thành công!", "Thông báo");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi không tìm thấy tài khoản cho người dùng này, vui lòng thử lại sau!", "Thông báo");
+                }
             }
+
         }
 
 
@@ -237,178 +306,205 @@ namespace ProjectPRN212
 
         private void UpdateProfile_Click(object sender, RoutedEventArgs e)
         {
-            if (em.RoleId == 1)
+            try
             {
+                string firstName = txtFirstname.Text;
+                string lastName = txtLastname.Text;
                 string email = txtEmail.Text;
-                string fname = txtFirstname.Text;
                 string phone = txtPhone.Text;
-                string lname = txtLastname.Text;
                 string address = txtAddress.Text;
-                string birthday = txtBirthdate.Text;
-                DateOnly dob = DateOnly.Parse(birthday);
-
+                string birthdate = txtBirthdate.Text;
+                DateOnly dateofbirth = DateOnly.Parse(birthdate);
                 bool gender = true;
                 if (radioMale.IsChecked == true)
                 {
                     gender = true;
                 }
-                else
+                else if (radioFemale.IsChecked == true)
                 {
                     gender = false;
                 }
-                bool status = false;
-                if (radioActive.IsChecked == false)
+
+                bool active = false;
+                if (radioActive.IsChecked == true)
                 {
-                    status = false;
+                    active = false;
                 }
-                else
+                else if (radioNonactive.IsChecked == true)
                 {
-                    status = true;
+                    active = true;
                 }
 
+                //MessageBox.Show("Gender "+ gender + " Active:" + active);
 
-                if (!double.TryParse(txtSalary.Text, out double salary))
+                //double salary = 0;
+                if (emAD != null)
                 {
-                    MessageBox.Show("Nhập lương nhân viên!", "Thông báo");
-                    return;
-                }
-
-                var selectedDepart = cbbDepartment.SelectedItem as Department;
-                if (selectedDepart == null)
-                {
-                    MessageBox.Show("Lựa chọn phòng ban!", "Thông báo");
-                    return;
-                }
-                int idDepart = selectedDepart.Id;
-
-                var selectedPosition = cbbPosition.SelectedItem as Position;
-                if (selectedPosition == null)
-                {
-                    MessageBox.Show("Chọn vị trí công việc!", "Thông báo");
-                    return;
-                }
-                int idPosition = selectedPosition.Id;
-                if (idPosition == 1 && em.PositionId != 1 && em.ManagerId != em.Id)
-                {
-                    if (MessageBox.Show("Giao cho nhân viên " + em.FirstName + " " + em.LastName + " thành trưởng phòng?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (!double.TryParse(txtSalary.Text, out double salary))
                     {
-                        var changeManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Id == em.ManagerId).SingleOrDefault();
-                        List<Employee> chageAllManager = new List<Employee>();
-                        if (changeManager != null)
+                        MessageBox.Show("Vui lòng nhập lương của nhân viên!", "Thông báo");
+                        return;
+                    }
+                    var selectedDepartment = cbbDepartment.SelectedItem as Department;
+                    if (selectedDepartment == null)
+                    {
+                        MessageBox.Show("Vui lòng lựa chọn phòng ban!", "Thông báo");
+                        return;
+                    }
+                    int idDepartment = selectedDepartment.Id;
+
+                    var selectedPosition = cbbPosition.SelectedItem as Position;
+                    if (selectedPosition == null)
+                    {
+                        MessageBox.Show("Vui lòng lựa chọn vị trí công việc!", "Thông báo");
+                        return;
+                    }
+                    int idPosition = selectedPosition.Id;
+
+                    if (idPosition == 1 && em.PositionId != 1 && em.ManagerId != em.Id) //nếu nó không phải là trưởng phòng và quản lí cũng khác nó
+                    {
+                        if (MessageBox.Show("Giao cho nhân viên " + em.FirstName + " " + em.LastName + " thành trưởng phòng?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         {
-                            chageAllManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.ManagerId == changeManager.Id).ToList();
+                            //cho thằng trưởng phòng hiện tại thành nhân viên và chịu sự trách nhiệm quả lí của thằng được xếp làm trường phòng
+                            var changeManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Id == em.ManagerId).SingleOrDefault();
+                            List<Employee> changeManagerEmployee = new List<Employee>();
+                            if (changeManager != null) //nếu nó có quản lí
+                            {
+                                changeManagerEmployee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.ManagerId == changeManager.Id).ToList();
+                            }
+                            else
+                            {
+                                changeManagerEmployee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == idDepartment).ToList();
+                            }
+
+                            if (changeManager != null)
+                            {
+                                changeManager.PositionId = null;
+                                changeManager.ManagerId = em.Id;
+                                changeManager.RoleId = 2;
+                                ProjectPrn212Context.INSTANCE.Employees.Update(changeManager);
+                                ProjectPrn212Context.INSTANCE.SaveChanges();
+                            }
+                            if (changeManagerEmployee != null)
+                            {
+                                changeManagerEmployee.ForEach(e => { e.ManagerId = em.Id; });
+                            }
+                        }
+                        var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
+                        if (employeeUpdate != null)
+                        {
+                            employeeUpdate.FirstName = firstName;
+                            employeeUpdate.LastName = lastName;
+                            employeeUpdate.Email = email;
+                            employeeUpdate.Phone = phone;
+                            employeeUpdate.Address = address;
+                            employeeUpdate.DateOfBirth = dateofbirth;
+                            employeeUpdate.Gender = gender;
+                            employeeUpdate.Salary = (decimal)salary;
+                            employeeUpdate.PositionId = idPosition;
+                            employeeUpdate.DepartmentId = idDepartment;
+                            employeeUpdate.ManagerId = em.Id;
+                            employeeUpdate.RoleId = 3;
+                            employeeUpdate.IsDelete = active;
+                            employeeUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                            ProjectPrn212Context.INSTANCE.SaveChanges();
+                            var authenticaton = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
+                            authenticaton.IsDelete = active;
+                            ProjectPrn212Context.INSTANCE.Employees.Update(employeeUpdate);
+                            if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                            {
+                                MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
+                                LoadData(em.Id);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không có thay đổi nào được lưu!", "Thông báo");
+                            }
                         }
                         else
                         {
-                            chageAllManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == idDepart).ToList();
-                        }
-                        if (changeManager != null)
-                        {
-                            changeManager.PositionId = 2;
-                            changeManager.ManagerId = em.Id;
-                            changeManager.RoleId = 2;
-                            ProjectPrn212Context.INSTANCE.Employees.Update(changeManager);
-                            ProjectPrn212Context.INSTANCE.SaveChanges();
-                        }
-                        if (chageAllManager != null)
-                        {
-                            chageAllManager.ForEach(e => { e.ManagerId = em.Id; });
+                            MessageBox.Show("Không tìm thấy nhân viên!", "Thông báo");
                         }
                     }
+                    else
+                    {
+                        var selectedManager = cbbManager.SelectedItem as dynamic;
+                        int idManager = selectedManager.ID;
+
+                        var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
+                        if (employeeUpdate != null)
+                        {
+                            employeeUpdate.FirstName = firstName;
+                            employeeUpdate.LastName = lastName;
+                            employeeUpdate.Email = email;
+                            employeeUpdate.Phone = phone;
+                            employeeUpdate.Address = address;
+                            employeeUpdate.DateOfBirth = dateofbirth;
+                            employeeUpdate.Salary = (decimal)salary;
+                            employeeUpdate.Gender = gender;
+                            employeeUpdate.PositionId = idPosition;
+                            employeeUpdate.DepartmentId = idDepartment;
+                            employeeUpdate.ManagerId = idManager;
+                            employeeUpdate.IsDelete = active;
+                            employeeUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                            ProjectPrn212Context.INSTANCE.SaveChanges();
+                            var authenticaton = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
+                            authenticaton.IsDelete = active;
+                            ProjectPrn212Context.INSTANCE.Employees.Update(employeeUpdate);
+                            if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                            {
+                                MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
+                                LoadData(em.Id);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không có thay đổi nào được lưu!", "Thông báo");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy nhân viên!", "Thông báo");
+                        }
+                    }
+
+
+                }
+                else
+                {
                     var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
                     if (employeeUpdate != null)
                     {
-                        employeeUpdate.FirstName = fname;
-                        employeeUpdate.LastName = lname;
+                        employeeUpdate.FirstName = firstName;
+                        employeeUpdate.LastName = lastName;
                         employeeUpdate.Email = email;
                         employeeUpdate.Phone = phone;
                         employeeUpdate.Address = address;
-                        employeeUpdate.DateOfBirth = dob;
+                        employeeUpdate.DateOfBirth = dateofbirth;
                         employeeUpdate.Gender = gender;
-                        employeeUpdate.Salary = (decimal)salary;
-                        employeeUpdate.PositionId = idPosition;
-                        employeeUpdate.DepartmentId = idDepart;
-                        employeeUpdate.ManagerId = em.Id;
-                        employeeUpdate.RoleId = 3;
-                        employeeUpdate.IsDelete = status;
                         employeeUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+
                         ProjectPrn212Context.INSTANCE.Employees.Update(employeeUpdate);
-                        ProjectPrn212Context.INSTANCE.SaveChanges();
-                        var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
-                        authentication.IsDelete = status;
-                        MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
+                        if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+                        {
+                            MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
+                            LoadData(em.Id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không có thay đổi nào được lưu!", "Thông báo");
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Không tìm thấy nhân viên!", "Thông báo");
                     }
                 }
-                else
-                {
-                    var selectedManager = cbbManager.SelectedItem as Employee;
-                    int idManager = selectedManager.Id;
-                    var employeeUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
-                    if (employeeUpdate != null)
-                    {
-                        employeeUpdate.FirstName = fname;
-                        employeeUpdate.LastName = lname;
-                        employeeUpdate.Email = email;
-                        employeeUpdate.Phone = phone;
-                        employeeUpdate.Address = address;
-                        employeeUpdate.DateOfBirth = dob;
-                        employeeUpdate.Gender = gender;
-                        employeeUpdate.Salary = (decimal)salary;
-                        employeeUpdate.PositionId = idPosition;
-                        employeeUpdate.DepartmentId = idDepart;
-                        employeeUpdate.ManagerId = em.Id;
-                        employeeUpdate.RoleId = 3;
-                        employeeUpdate.IsDelete = status;
-                        employeeUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-                        ProjectPrn212Context.INSTANCE.Employees.Update(employeeUpdate);
-                        ProjectPrn212Context.INSTANCE.SaveChanges();
-                        var authentication = ProjectPrn212Context.INSTANCE.Authentications.SingleOrDefault(a => a.EmployeeId == em.Id);
-                        authentication.IsDelete = status;
-                        MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
-                    }
-                }
+
 
             }
-            else
+            catch (Exception ex)
             {
-                string email = txtEmail.Text;
-                string fname = txtFirstname.Text;
-                string phone = txtPhone.Text;
-                string lname = txtLastname.Text;
-                string address = txtAddress.Text;
-                string birthday = txtBirthdate.Text;
-                DateOnly dob = DateOnly.Parse(birthday);
-
-                bool gender = true;
-                if (radioMale.IsChecked == true)
-                {
-                    gender = true;
-                }
-                else
-                {
-                    gender = false;
-                }
-
-                var emUpdate = ProjectPrn212Context.INSTANCE.Employees.FirstOrDefault(e => e.Id == em.Id);
-                if (emUpdate != null)
-                {
-                    emUpdate.FirstName = fname;
-                    emUpdate.LastName = lname;
-                    emUpdate.Email = email;
-                    emUpdate.Phone = phone;
-                    emUpdate.Address = address;
-                    emUpdate.DateOfBirth = dob;
-                    emUpdate.Gender = gender;
-                    emUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    ProjectPrn212Context.INSTANCE.Employees.Update(emUpdate);
-                    ProjectPrn212Context.INSTANCE.SaveChanges();
-                    MessageBox.Show("Thông tin cá nhân đã được cập nhật!", "Thông báo");
-                    LoadData(em.Id);
-                }
+                MessageBox.Show("Lỗi cập nhật: " + ex.Message, "Thông báo");
             }
         }
 
@@ -457,6 +553,11 @@ namespace ProjectPRN212
                     MessageBox.Show("Lỗi tìm quản lý!", "Thông báo");
                 }
             }
+        }
+
+        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

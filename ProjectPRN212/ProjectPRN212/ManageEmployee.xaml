@@ -1,0 +1,70 @@
+﻿<Window x:Class="ProjectPRN212.ManageEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectPRN212"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        Title="Quản lý nhân viên" Height="800" Width="1450">
+    <Grid Margin="40,30,40,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="195*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Quản lý nhân viên</Label>
+        <StackPanel Orientation="Horizontal" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Button Content="Quay lại" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoBack_Click"/>
+            <Button Content="Trang chủ" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="GoHome_Click"/>
+            <Button Content="Đăng xuất" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="Logout_Click" />
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="0" FontSize="20" FontWeight="DemiBold">Danh sách nhân viên:</Label>
+        <DataGrid Name="dgEmployee" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="11" FontSize="15">
+        </DataGrid>
+
+        <StackPanel Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Margin="10,5,10,5" FontSize="15">Tìm kiếm:</Label>
+            <TextBox Name="txtDatasearch" Width="200" Height="30" FontSize="15" TextChanged="txtDatasearch_TextChanged"/>
+
+            <!--<Button Content="Tìm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" />-->
+            <Label Margin="10,5,10,5" FontSize="15">Lọc nhân viên:</Label>
+            <ComboBox Name="cbbFilterEmployeeStatus" Width="150" Height="30" Margin="10,5,10,5" FontSize="15" SelectionChanged="cbbFilterStatusEmployee_SelectionChanged">
+                <ComboBoxItem Content="Đang hoạt động"/>
+                <ComboBoxItem Content="Ngừng hoạt động"/>
+                <ComboBoxItem Content="Nam"/>
+                <ComboBoxItem Content="Nữ"/>
+                <ComboBoxItem Content="Trưởng phòng"/>
+                <ComboBoxItem Content="Nhân viên chính"/>
+                <ComboBoxItem Content="Nhân viên partime"/>
+                <ComboBoxItem Content="Thực tập sinh"/>
+            </ComboBox>
+            <CheckBox x:Name="cbAllEmployee" Content="Tất cả nhân viên" FontSize="15" Width="160" Height="30" Margin="10,5,10,5" IsChecked="False" Padding="5" BorderThickness="12,8,12,8" Checked="cbAllEmployee_Checked" />
+            <Button Content="Xem chi tiết" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="DetailEmployee_Click"/>
+            <Button Content="Thêm mới" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="AddNewEmployee_Click" />
+        </StackPanel>
+        <TextBox Name="txtEmployeeID" IsReadOnly="True" Grid.Row="115" Grid.Column="1" Height="30" FontSize="15" Margin="10,0,10,0" Visibility="Collapsed" Text="{Binding ElementName=dgEmployee, Path=SelectedItem.ID, Mode=OneWay}"/>
+
+    </Grid>
+</Window>

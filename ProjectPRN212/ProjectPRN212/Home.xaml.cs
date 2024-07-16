@@ -54,11 +54,6 @@ namespace ProjectPRN212
             this.Close();
         }
 
-        private void Department_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void EmployeeJobs_Click(object sender, RoutedEventArgs e)
         {
             EmployeeJobs employeejobs = new EmployeeJobs(em);
@@ -80,9 +75,9 @@ namespace ProjectPRN212
 
         private void EmployeeList_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeJobs employeejobs = new EmployeeJobs(em);
+            ManageEmployee mnemploy = new ManageEmployee(em);
             this.Hide();
-            employeejobs.ShowDialog();
+            mnemploy.ShowDialog();
             this.Close();
         }
 

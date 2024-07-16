@@ -178,7 +178,7 @@ VALUES
 -- Manager : Phòng công nghệ thông tin
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
-(N'Nguyễn', N'Trí Thắng', 'nguyen.tri.thang@gmail.com', '0987654321', 35000000.00, 3, 1, null, 1, '1980-01-01', 1, N'97 HAO NAM, P.O CHO DUA, DONG DA, HA NOI ', GETDATE(), GETDATE());
+(N'Nguyễn', N'Trí Thắng', 'nguyen.tri.thang@gmail.com', '0987654321', 35000000.00, 3, 1, 1, 1, '1980-01-01', 1, N'97 HAO NAM, P.O CHO DUA, DONG DA, HA NOI ', GETDATE(), GETDATE());
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender,  Address, CreatedAt, UpdatedAt)
 VALUES 
 (N'Trần', N'Thị Lan', 'tran.thi.lan@gmail.com', '0987654321', 28000000.00, 2, 1, 1, 2, '1985-02-28', 0, N'101 Mai Hắc Đế, Bùi Thị Xuân, Hai Bà Trưng, Hà Nội', GETDATE(), GETDATE()),
@@ -193,7 +193,7 @@ VALUES
 -- Manager : Phòng nhân sự
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth,  Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
-(N'Phạm', N'Trí Thanh', 'pham.tri.thanh@gmail.com', '0987654321', 35000000.00, 3, 2, NULL, 1, '1980-02-01', 1, N'SO 47 Lương Văn Cần, Hoàn Kiếm, Hà Nội', GETDATE(), GETDATE());
+(N'Phạm', N'Trí Thanh', 'pham.tri.thanh@gmail.com', '0987654321', 35000000.00, 3, 2, 10, 1, '1980-02-01', 1, N'SO 47 Lương Văn Cần, Hoàn Kiếm, Hà Nội', GETDATE(), GETDATE());
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
 (N'Lê', N'Thị Thắm', 'le.thi.tham@gmail.com', '0987654321', 28000000.00, 2, 2, 10, 2, '1985-03-28',0, N'SO 48 Lê Đài Hanh, Hai Bà Trưng, Hà Nội', GETDATE(), GETDATE()),
@@ -207,7 +207,7 @@ VALUES
 -- Manager : Phòng Kế toán
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
-(N'Lê', N'Trí Khang', 'le.tri.khang3@gmail.com', '0987654321', 35000000.00, 3, 3, NULL, 1, '1980-03-01',1, N'SO 02 Hoa Lư, Lê Đại Hành, Hai Bà Trưng, Hà Nội', GETDATE(), GETDATE());
+(N'Lê', N'Trí Khang', 'le.tri.khang3@gmail.com', '0987654321', 35000000.00, 3, 3, 18, 1, '1980-03-01',1, N'SO 02 Hoa Lư, Lê Đại Hành, Hai Bà Trưng, Hà Nội', GETDATE(), GETDATE());
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
 (N'Lý', N'Thị Hồng', 'ly.thi.hong1@gmail.com', '0987654321', 28000000.00, 2, 3, 18, 2, '1985-04-28',0, N'SO 09 Đào Duy Anh, Đống Đa, Hà Nội', GETDATE(), GETDATE()),
@@ -221,7 +221,7 @@ VALUES
 -- Manager : Phòng marketing
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
-(N'Vũ', N'Trí Thịnh', 'vu.tri.thinh8@gmail.com', '0987654321', 35000000.00, 3, 4, NULL, 1, '1980-04-01',1, N'102 H4 Thành Công, Ba Đình, Hà Nội ', GETDATE(), GETDATE());
+(N'Vũ', N'Trí Thịnh', 'vu.tri.thinh8@gmail.com', '0987654321', 35000000.00, 3, 4, 26, 1, '1980-04-01',1, N'102 H4 Thành Công, Ba Đình, Hà Nội ', GETDATE(), GETDATE());
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
 (N'Trần', N'Thị Bình', 'tran.thi.binh@gmail.com', '0987654321', 28000000.00, 2, 4, 26, 2, '1985-05-28',0, N'49 Ngô Thì Nhậm, Hai Bà Trưng, Hà Nội ', GETDATE(), GETDATE()),
@@ -235,7 +235,7 @@ VALUES
 -- Phòng bán hàng:
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
-(N'Hồ', N'Trí Thức', 'ho.tri.thuc5@company.com', '0987654321', 35000000.00, 3, 5, NULL, 1, '1980-05-01', 1, N'84 Mai Hắc Đế, Hai Bà Trưng, Hà Nội ', GETDATE(), GETDATE());
+(N'Hồ', N'Trí Thức', 'ho.tri.thuc5@company.com', '0987654321', 35000000.00, 3, 5, 34, 1, '1980-05-01', 1, N'84 Mai Hắc Đế, Hai Bà Trưng, Hà Nội ', GETDATE(), GETDATE());
 INSERT INTO Employees (FirstName, LastName, Email, Phone, Salary, RoleID, DepartmentID, ManagerID, PositionID, DateOfBirth, Gender, Address, CreatedAt, UpdatedAt)
 VALUES 
 (N'Lý', N'Thị Cân', 'ly.thi.can5@gmail.com', '0987654321', 28000000.00, 2, 5, 34, 3, '1985-06-28',0,N'56 Bạch Thái Bưởi, Văn Quan, Hà Đông, Hà Nội', GETDATE(), GETDATE()),
