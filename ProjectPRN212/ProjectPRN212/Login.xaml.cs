@@ -38,7 +38,7 @@ namespace ProjectPRN212
                     return;
                 }
 
-                Authentication account = ProjectPrn212Context.INSTANCE.Authentications.FirstOrDefault(a => a.Username.Equals(username) && a.PassWord.Equals(password));
+                Authentication account = ProjectPrn212Context.INSTANCE.Authentications.FirstOrDefault(a => a.Username.Equals(username) && a.PassWord.Equals(password) && a.IsDelete == false);
                 if (account == null)
                 {
                     MessageBox.Show("Tài khoản không tồn tại!", "Thông báo", MessageBoxButton.OK);

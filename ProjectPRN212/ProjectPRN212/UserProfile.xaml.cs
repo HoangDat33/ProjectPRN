@@ -52,7 +52,6 @@ namespace ProjectPRN212
                 txtSalary.IsReadOnly = false;
                 radioActive.IsEnabled = true;
                 radioNonactive.IsEnabled = true;
-                btnAddEmployee.Visibility = Visibility.Visible;
             }
             LoadData(em.Id);
             LoadDataAccount();
@@ -555,9 +554,5 @@ namespace ProjectPRN212
             }
         }
 
-        private void AddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

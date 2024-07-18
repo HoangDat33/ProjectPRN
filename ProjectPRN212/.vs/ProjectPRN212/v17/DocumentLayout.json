@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\managedepartment.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\managedepartment.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\managedepartment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\managedepartment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\manageemployee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\manageemployee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\manageemployee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\manageemployee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\manageemployee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\manageemployee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\userprofile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 99,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Home.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Home.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\Home.xaml",
@@ -50,7 +62,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Home.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Home.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\Home.xaml.cs",
@@ -63,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UserProfile.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\UserProfile.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\UserProfile.xaml",
@@ -71,7 +83,46 @@
               "RelativeToolTip": "ProjectPRN212\\UserProfile.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-07-16T10:27:06.702Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManageDepartment.xaml",
+              "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml",
+              "RelativeDocumentMoniker": "ProjectPRN212\\ManageDepartment.xaml",
+              "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml",
+              "RelativeToolTip": "ProjectPRN212\\ManageDepartment.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-18T14:45:04.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ManageDepartment.xaml.cs",
+              "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml.cs",
+              "RelativeDocumentMoniker": "ProjectPRN212\\ManageDepartment.xaml.cs",
+              "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageDepartment.xaml.cs",
+              "RelativeToolTip": "ProjectPRN212\\ManageDepartment.xaml.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAawEwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T14:45:02.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "ProjectPRN212\\Login.xaml.cs",
+              "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\Login.xaml.cs",
+              "RelativeToolTip": "ProjectPRN212\\Login.xaml.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAACgAAAC8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T14:42:24.154Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -87,20 +138,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ManageEmployee.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageEmployee.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\ManageEmployee.xaml.cs",
               "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageEmployee.xaml.cs",
               "RelativeToolTip": "ProjectPRN212\\ManageEmployee.xaml.cs",
-              "ViewState": "AQIAAGgBAAAAAAAAAAAAAHwBAAARAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAGgCAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T14:05:15.556Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ManageEmployee.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageEmployee.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\ManageEmployee.xaml",
@@ -112,15 +163,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "UserProfile.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\UserProfile.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\UserProfile.xaml.cs",
               "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\UserProfile.xaml.cs",
               "RelativeToolTip": "ProjectPRN212\\UserProfile.xaml.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAAOYBAAA5AAAA",
+              "ViewState": "AQIAAGoBAAAAAAAAAAAAADUAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T10:34:49.717Z"
+              "WhenOpened": "2024-07-16T10:34:49.717Z",
+              "EditorCaption": ""
             }
           ]
         },
