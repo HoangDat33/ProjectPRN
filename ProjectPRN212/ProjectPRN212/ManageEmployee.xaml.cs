@@ -312,7 +312,7 @@ namespace ProjectPRN212
             cbbDepart.DisplayMemberPath = "Name";
             cbbDepart.SelectedValuePath = "ID";
 
-            var positions = ProjectPrn212Context.INSTANCE.Positions.ToList();
+            var positions = ProjectPrn212Context.INSTANCE.Positions.Where(p => p.Id != 1).ToList();
             cbbPosition.ItemsSource = positions;
             cbbPosition.DisplayMemberPath = "Name";
             cbbPosition.SelectedValuePath = "ID";
@@ -361,135 +361,88 @@ namespace ProjectPRN212
                 {
                     popup.IsOpen = false;
                     MessageBox.Show("Vui lòng nhập lương của nhân viên!", "Thông báo");
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        popup.IsOpen = true;
+                    }), System.Windows.Threading.DispatcherPriority.ContextIdle);
                     return;
                 }
                 if (!IsEmailFormatValid(email))
                 {
                     popup.IsOpen = false;
                     MessageBox.Show("Email không hợp lệ!", "Thông báo");
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        popup.IsOpen = true;
+                    }), System.Windows.Threading.DispatcherPriority.ContextIdle);
                     return;
                 }
                 if (CheckDuplicateEmail(email))
                 {
                     popup.IsOpen = false;
                     MessageBox.Show("Email đã tồn tại!", "Thông báo");
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        popup.IsOpen = true;
+                    }), System.Windows.Threading.DispatcherPriority.ContextIdle);
                     return;
                 }
                 if (!IsValidPhoneNumber(phone))
                 {
                     popup.IsOpen = false;
                     MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo");
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        popup.IsOpen = true;
+                    }), System.Windows.Threading.DispatcherPriority.ContextIdle);
                     return;
                 }
+
                 var selectedDepartment = cbbDepart.SelectedItem as Department;
                 int idDepartment = selectedDepartment.Id;
 
                 var selectedPosition = cbbPosition.SelectedItem as Position;
                 int idPosition = selectedPosition.Id;
 
-                if (idPosition == 1)
+                var selectedManager = cbbManager.SelectedItem as dynamic;
+                int idManager = selectedManager.ID;
+                Employee newEmployee = new Employee();
+                newEmployee.FirstName = firstName;
+                newEmployee.LastName = lastName;
+                newEmployee.Email = email;
+                newEmployee.Phone = phone;
+                newEmployee.Address = address;
+                newEmployee.DateOfBirth = dateofbirth;
+                newEmployee.Gender = gender;
+                newEmployee.Salary = (decimal)salary;
+                newEmployee.PositionId = idPosition;
+                newEmployee.DepartmentId = idDepartment;
+                newEmployee.ManagerId = idManager;
+                newEmployee.IsDelete = active;
+                newEmployee.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
+                newEmployee.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                ProjectPrn212Context.INSTANCE.Employees.Add(newEmployee);
+                ProjectPrn212Context.INSTANCE.SaveChanges();
+
+                Authentication empAuthentication = new Authentication();
+                empAuthentication.EmployeeId = newEmployee.Id;
+                empAuthentication.Username = email;
+                empAuthentication.PassWord = "12345678";
+                empAuthentication.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
+                empAuthentication.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+
+                ProjectPrn212Context.INSTANCE.Authentications.Add(empAuthentication);
+                if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
                 {
-                    Employee newEmployee = new Employee();
                     popup.IsOpen = false;
-                    if (MessageBox.Show("Giao cho nhân viên thành trưởng phòng?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        //cho thằng trưởng phòng hiện tại thành nhân viên và chịu sự trách nhiệm quả lí của thằng được xếp làm trường phòng
-                        var changeManager = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == idDepartment && e.ManagerId == e.Id).SingleOrDefault();
-                        var changeManagerEmployee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.ManagerId == changeManager.Id).ToList();
-                        if (changeManager != null)
-                        {
-                            changeManager.PositionId = 1;
-                            changeManager.ManagerId = newEmployee.Id;
-                            changeManager.RoleId = 2;
-                            ProjectPrn212Context.INSTANCE.Employees.Update(changeManager);
-                            ProjectPrn212Context.INSTANCE.SaveChanges();
-                        }
-                        if (changeManagerEmployee != null)
-                        {
-                            changeManagerEmployee.ForEach(e => { e.ManagerId = newEmployee.Id; });
-                        }
-                    }
-                    newEmployee.FirstName = firstName;
-                    newEmployee.LastName = lastName;
-                    newEmployee.Email = email;
-                    newEmployee.Phone = phone;
-                    newEmployee.Address = address;
-                    newEmployee.DateOfBirth = dateofbirth;
-                    newEmployee.Salary = (decimal)salary;
-                    newEmployee.Gender = gender;
-                    newEmployee.PositionId = idPosition;
-                    newEmployee.DepartmentId = idDepartment;
-                    newEmployee.ManagerId = em.Id;
-                    newEmployee.RoleId = 3;
-                    newEmployee.IsDelete = active;
-                    newEmployee.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    newEmployee.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-
-                    ProjectPrn212Context.INSTANCE.Employees.Add(newEmployee);
-                    ProjectPrn212Context.INSTANCE.SaveChanges();
-
-                    Authentication empAuthentication = new Authentication();
-                    empAuthentication.EmployeeId = newEmployee.Id;
-                    empAuthentication.Username = email;
-                    empAuthentication.PassWord = "12345678";
-                    empAuthentication.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    empAuthentication.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-
-                    ProjectPrn212Context.INSTANCE.Authentications.Add(empAuthentication);
-                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
-                    {
-                        popup.IsOpen = false;
-                        MessageBox.Show("Nhân viên mới đã được thêm thành công!", "Thông báo");
-                        LoadDataEmployee();
-                    }
-                    else
-                    {
-                        popup.IsOpen = false;
-                        MessageBox.Show("Lỗi thêm nhân viên thất bại!", "Thông báo");
-                    }
+                    MessageBox.Show("Nhân viên mới đã được thêm thành công!", "Thông báo");
+                    ClearPop();
+                    LoadDataEmployee();
                 }
                 else
                 {
-                    var selectedManager = cbbManager.SelectedItem as dynamic;
-                    int idManager = selectedManager.ID;
-                    Employee newEmployee = new Employee();
-                    newEmployee.FirstName = firstName;
-                    newEmployee.LastName = lastName;
-                    newEmployee.Email = email;
-                    newEmployee.Phone = phone;
-                    newEmployee.Address = address;
-                    newEmployee.DateOfBirth = dateofbirth;
-                    newEmployee.Gender = gender;
-                    newEmployee.Salary = (decimal)salary;
-                    newEmployee.PositionId = idPosition;
-                    newEmployee.DepartmentId = idDepartment;
-                    newEmployee.ManagerId = idManager;
-                    newEmployee.IsDelete = active;
-                    newEmployee.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    newEmployee.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    ProjectPrn212Context.INSTANCE.Employees.Add(newEmployee);
-                    ProjectPrn212Context.INSTANCE.SaveChanges();
-
-                    Authentication empAuthentication = new Authentication();
-                    empAuthentication.EmployeeId = newEmployee.Id;
-                    empAuthentication.Username = email;
-                    empAuthentication.PassWord = "12345678";
-                    empAuthentication.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
-                    empAuthentication.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
-
-                    ProjectPrn212Context.INSTANCE.Authentications.Add(empAuthentication);
-                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
-                    {
-                        popup.IsOpen = false;
-                        MessageBox.Show("Nhân viên mới đã được thêm thành công!", "Thông báo");
-                        LoadDataEmployee();
-                    }
-                    else
-                    {
-                        popup.IsOpen = false;
-                        MessageBox.Show("Lỗi thêm nhân viên thất bại!", "Thông báo");
-                    }
-
+                    popup.IsOpen = false;
+                    MessageBox.Show("Lỗi thêm nhân viên thất bại!", "Thông báo");
                 }
 
 
@@ -498,6 +451,24 @@ namespace ProjectPRN212
             {
                 popup.IsOpen = false;
                 MessageBox.Show("Lỗi thêm mới nhân viên!", "Thông báo");
+            }
+        }
+
+        private void ClearPop()
+        {
+            try
+            {
+                fName.Clear();
+                lName.Clear();
+                txtAddress.Clear();
+                txtBirthdate.SelectedDate = null;
+                txtEmail.Clear();
+                txtSalary.Clear();
+                txtPhone.Clear();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         private static bool IsEmailFormatValid(string email)
@@ -619,5 +590,9 @@ namespace ProjectPRN212
             }
         }
 
+        private void ClearPopupButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearPop();
+        }
     }
 }

@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\manageemployee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\userprofile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\userprofile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\userprofile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|solutionrelative:projectprn212\\userprofile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D462E05-18E9-44F8-86E6-2F6946EE3528}|ProjectPRN212\\ProjectPRN212.csproj|d:\\sem5\\net\\projectprn\\projectprn212\\projectprn212\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -46,8 +46,7 @@
               "RelativeToolTip": "ProjectPRN212\\Home.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-07-05T07:21:38.884Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -60,12 +59,11 @@
               "ViewState": "AQIAADgAAAAAAAAAAAAowE8AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-05T07:50:12.01Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "UserProfile.xaml",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\UserProfile.xaml",
               "RelativeDocumentMoniker": "ProjectPRN212\\UserProfile.xaml",
@@ -73,8 +71,7 @@
               "RelativeToolTip": "ProjectPRN212\\UserProfile.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-07-16T10:27:06.702Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -96,7 +93,7 @@
               "RelativeDocumentMoniker": "ProjectPRN212\\ManageEmployee.xaml.cs",
               "ToolTip": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\ManageEmployee.xaml.cs",
               "RelativeToolTip": "ProjectPRN212\\ManageEmployee.xaml.cs",
-              "ViewState": "AQIAAAECAAAAAAAAAAAuwBACAAAtAAAA",
+              "ViewState": "AQIAAGgBAAAAAAAAAAAAAHwBAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T14:05:15.556Z",
               "EditorCaption": ""
@@ -115,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserProfile.xaml.cs",
               "DocumentMoniker": "D:\\Sem5\\NET\\ProjectPRN\\ProjectPRN212\\ProjectPRN212\\UserProfile.xaml.cs",
               "RelativeDocumentMoniker": "ProjectPRN212\\UserProfile.xaml.cs",
@@ -123,8 +120,7 @@
               "RelativeToolTip": "ProjectPRN212\\UserProfile.xaml.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAAAOYBAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T10:34:49.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T10:34:49.717Z"
             }
           ]
         },
