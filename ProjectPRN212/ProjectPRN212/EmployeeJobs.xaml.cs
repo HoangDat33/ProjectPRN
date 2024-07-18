@@ -37,7 +37,6 @@ namespace ProjectPRN212
                 if (em.RoleId == 2)
                 {
                     LoadIndiJobs();
-                    cbAllJob.Visibility = Visibility.Visible;
                     cbIndiJob.Visibility = Visibility.Visible;
                 }
                 if (em.RoleId == 3)
@@ -578,32 +577,55 @@ namespace ProjectPRN212
 
         private void cbbFilterJobStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbIndiJob.IsChecked == true)
+            if (em.RoleId == 3)
             {
-                var statusID = cbbFilterJobStatus.SelectedIndex + 1;
-                dgEmJobs.ItemsSource = string.Empty;
-                var job = ProjectPrn212Context.INSTANCE.EmployeeJobs.Where(j => j.Job.DepartmentId == em.DepartmentId && j.Job.JobStatusId == statusID
-                 && j.EmployeeId == em.Id && j.IsDelete == false).Select(j => new
-                 {
-                     ID = j.EmployeeJobId,
-                     JobID = j.JobId,
-                     JobName = j.Job.Title,
-                     Description = j.Job.Description,
-                     EmployeeName = j.Employee.FirstName + " " + j.Employee.LastName,
-                     AssignBy = j.Job.AssignedByNavigation.FirstName + " " + j.Job.AssignedByNavigation.LastName,
-                     StartDate = j.Job.StartDate,
-                     EndDate = j.Job.EndDate,
-                     AssigmentDate = j.AssignmentDate,
-                     Status = j.Job.JobStatus.Name,
-                 }).ToList();
-                dgEmJobs.ItemsSource = job.ToList();
-                cbAllJob.IsChecked = false;
+                if (cbIndiJob.IsChecked == true)
+                {
+                    var statusId = cbbFilterJobStatus.SelectedIndex + 1;
+                    dgEmJobs.ItemsSource = string.Empty;
+                    var job = ProjectPrn212Context.INSTANCE.EmployeeJobs.Where(j => j.Job.DepartmentId == em.DepartmentId && j.Job.JobStatusId == statusId && j.EmployeeId == em.Id && j.IsDelete == false).Select(j => new
+                    {
+                        ID = j.EmployeeJobId,
+                        JobID = j.JobId,
+                        JobName = j.Job.Title,
+                        Description = j.Job.Description,
+                        EmployeeName = j.Employee.FirstName + " " + j.Employee.LastName,
+                        AssignBy = j.Job.AssignedByNavigation.FirstName + " " + j.Job.AssignedByNavigation.LastName,
+                        StartDate = j.Job.StartDate,
+                        EndDate = j.Job.EndDate,
+                        AssigmentDate = j.AssignmentDate,
+                        Status = j.Job.JobStatus.Name,
+                    }).ToList();
+                    dgEmJobs.ItemsSource = job.ToList();
+                    cbAllJob.IsChecked = false;
+                }
+                else
+                {
+                    var statusId = cbbFilterJobStatus.SelectedIndex + 1;
+                    dgEmJobs.ItemsSource = string.Empty;
+                    var job = ProjectPrn212Context.INSTANCE.EmployeeJobs.Where(j => j.Job.DepartmentId == em.DepartmentId && j.Job.JobStatusId == statusId && j.IsDelete == false).Select(j => new
+                    {
+                        ID = j.EmployeeJobId,
+                        JobID = j.JobId,
+                        JobName = j.Job.Title,
+                        Description = j.Job.Description,
+                        EmployeeName = j.Employee.FirstName + " " + j.Employee.LastName,
+                        AssignBy = j.Job.AssignedByNavigation.FirstName + " " + j.Job.AssignedByNavigation.LastName,
+                        StartDate = j.Job.StartDate,
+                        EndDate = j.Job.EndDate,
+                        AssigmentDate = j.AssignmentDate,
+                        Status = j.Job.JobStatus.Name,
+                    }).ToList();
+                    dgEmJobs.ItemsSource = job.ToList();
+                    cbAllJob.IsChecked = false;
+                    cbIndiJob.IsChecked = false;
+                }
             }
-            else
+            if (em.RoleId == 2)
             {
                 var statusId = cbbFilterJobStatus.SelectedIndex + 1;
                 dgEmJobs.ItemsSource = string.Empty;
-                var job = ProjectPrn212Context.INSTANCE.EmployeeJobs.Where(j => j.Job.DepartmentId == em.DepartmentId && j.Job.JobStatusId == statusId && j.IsDelete == false).Select(j => new
+                var job = ProjectPrn212Context.INSTANCE.EmployeeJobs.Where(j => j.Job.DepartmentId == em.DepartmentId && j.Job.JobStatusId == statusId && j.EmployeeId == em.Id && j.IsDelete == false).Select(j => new
                 {
                     ID = j.EmployeeJobId,
                     JobID = j.JobId,
@@ -618,7 +640,6 @@ namespace ProjectPRN212
                 }).ToList();
                 dgEmJobs.ItemsSource = job.ToList();
                 cbAllJob.IsChecked = false;
-                cbIndiJob.IsChecked = false;
             }
         }
     }
