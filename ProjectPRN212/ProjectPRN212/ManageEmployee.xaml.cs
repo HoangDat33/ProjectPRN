@@ -580,12 +580,12 @@ namespace ProjectPRN212
                         FileInfo excelFile = new FileInfo(filePath);
                         package.SaveAs(excelFile);
 
-                        MessageBox.Show("Đã lưu danh sách nhân viên vào tệp Excel thành công.", "Thông báo", MessageBoxButton.OK);
+                        MessageBox.Show("Export thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Đã xảy ra lỗi khi lưu tệp Excel: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -605,7 +605,7 @@ namespace ProjectPRN212
             var employee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Id == idEmployee).SingleOrDefault();
             if (employee != null)
             {
-                if(MessageBox.Show("Bạn có chắc muốn xóa nhân viên này không?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn xóa nhân viên này không?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     var authEm = ProjectPrn212Context.INSTANCE.Authentications.Where(a => a.EmployeeId == employee.Id).SingleOrDefault();
                     if (authEm != null)
@@ -619,6 +619,44 @@ namespace ProjectPRN212
                     MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
                     LoadDataEmployee();
                 }
+            }
+        }
+
+        private void ExportJson_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Microsoft.Win32.OpenFileDialog saveFileDialog = new Microsoft.Win32.OpenFileDialog();
+                saveFileDialog.Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
+                saveFileDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
+                saveFileDialog.Title = "Tạo mới tệp Json";
+                bool? result = saveFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    var employees = ProjectPrn212Context.INSTANCE.Employees
+                                                    .Select(e => new
+                                                    {
+                                                        e.Id,
+                                                        e.FirstName,
+                                                        e.LastName,
+                                                        e.Email,
+                                                        e.Phone,
+                                                        e.Salary,
+                                                        e.RoleId
+                                                    }).ToList();
+
+                    string json = JsonConvert.SerializeObject(employees, Newtonsoft.Json.Formatting.Indented);
+
+                    string filePath = saveFileDialog.FileName;
+                    File.WriteAllText(filePath, json);
+
+                    MessageBox.Show("Export thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

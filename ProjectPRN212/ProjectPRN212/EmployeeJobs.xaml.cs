@@ -312,7 +312,7 @@ namespace ProjectPRN212
                 {
                     MessageBox.Show("Thêm mới công việc thành công!", "Thông báo");
                     //LoadDataJobs();
-                    LoadDataJobs();
+                    LoadIndiJobs();
                 }
                 else
                 {
