@@ -595,33 +595,6 @@ namespace ProjectPRN212
             ClearPop();
         }
 
-        private void DeleteNewEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(txtEmployeeID.Text, out int idEmployee))
-            {
-                MessageBox.Show("Vui lòng lựa chọn nhân viên muốn xóa!", "Thông báo");
-                return;
-            }
-            var employee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Id == idEmployee).SingleOrDefault();
-            if (employee != null)
-            {
-                if (MessageBox.Show("Bạn có chắc muốn xóa nhân viên này không?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    var authEm = ProjectPrn212Context.INSTANCE.Authentications.Where(a => a.EmployeeId == employee.Id).SingleOrDefault();
-                    if (authEm != null)
-                    {
-                        authEm.IsDelete = true;
-                        employee.IsDelete = true;
-                        ProjectPrn212Context.INSTANCE.Authentications.Update(authEm);
-                        ProjectPrn212Context.INSTANCE.Employees.Update(employee);
-                        ProjectPrn212Context.INSTANCE.SaveChanges();
-                    }
-                    MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
-                    LoadDataEmployee();
-                }
-            }
-        }
-
         private void ExportJson_Click(object sender, RoutedEventArgs e)
         {
             try

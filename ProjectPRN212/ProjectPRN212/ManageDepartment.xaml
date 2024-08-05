@@ -103,7 +103,6 @@
         <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button Name="btnUpdateDepartment" Content="Câp nhật" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnUpdateDepartment_Click" />
             <Button Name="btnAddDepartment" Content="Thêm" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnAddDepartment_Click"  />
-            <Button Name="btnDeleteDepartment" Content="Xóa" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnDeleteDepartment_Click"  />
             <Button Name="btnClear" Content="Làm mới" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0,0,18,0" Click="btnClear_Click"  />
         </StackPanel>
 

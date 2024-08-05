@@ -36,7 +36,7 @@ namespace ProjectPRN212
 
         private void LoadDataDepartment()
         {
-            var departmentDt = ProjectPrn212Context.INSTANCE.Departments.Select(d => new
+            var departmentDt = ProjectPrn212Context.INSTANCE.Departments.Where(d => d.IsDelete == false).Select(d => new
             {
                 DepartmentID = d.Id,
                 Name = d.Name,
@@ -72,74 +72,74 @@ namespace ProjectPRN212
 
         }
 
-        private void btnDeleteDepartment_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (!int.TryParse(txtDepartmentID.Text, out int Id))
-                {
-                    MessageBox.Show("Lỗi xử lí ID!", "Thông báo");
-                    return;
-                }
-                var department = ProjectPrn212Context.INSTANCE.Departments.SingleOrDefault(d => d.Id == Id);
-                if (department != null)
-                {
-                    var employee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == Id).ToList();
-                    var job = ProjectPrn212Context.INSTANCE.Jobs.Where(j => j.DepartmentId == Id).ToList();
-                    if (employee.Count != 0)
-                    {
-                        if (MessageBox.Show("Xóa phòng " + department.Name + " sẽ làm cho các nhân viên hiện tại của phòng ban này không có phòng làm việc và xóa hết công việc của phòng này! Chắc chắn muốn xóa phòng " + department.Name + " ?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        {
-                            employee.ForEach(e => { e.DepartmentId = null; });
-                            employee.ForEach(e => ProjectPrn212Context.INSTANCE.Employees.Update(e));
+        //private void btnDeleteDepartment_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!int.TryParse(txtDepartmentID.Text, out int Id))
+        //        {
+        //            MessageBox.Show("Lỗi xử lí ID!", "Thông báo");
+        //            return;
+        //        }
+        //        var department = ProjectPrn212Context.INSTANCE.Departments.SingleOrDefault(d => d.Id == Id);
+        //        if (department != null)
+        //        {
+        //            var employee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == Id).ToList();
+        //            var job = ProjectPrn212Context.INSTANCE.Jobs.Where(j => j.DepartmentId == Id).ToList();
+        //            if (employee.Count != 0)
+        //            {
+        //                if (MessageBox.Show("Xóa phòng " + department.Name + " sẽ làm cho các nhân viên hiện tại của phòng ban này không có phòng làm việc và xóa hết công việc của phòng này! Chắc chắn muốn xóa phòng " + department.Name + " ?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        //                {
+        //                    employee.ForEach(e => { e.DepartmentId = null; });
+        //                    employee.ForEach(e => ProjectPrn212Context.INSTANCE.Employees.Update(e));
 
-                            job.ForEach(j => { j.DepartmentId = null; });
-                            job.ForEach(j => ProjectPrn212Context.INSTANCE.Jobs.Update(j));
-                            ProjectPrn212Context.INSTANCE.Departments.Remove(department);
-                            if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
-                            {
-                                MessageBox.Show("Xóa phòng ban thành công!", "Thông báo");
-                                LoadDataDepartment();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Xóa phòng ban thất bại!", "Thông báo");
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("Bạn chắc chắn muốn xóa phòng " + department.Name + " ?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        {
-                            ProjectPrn212Context.INSTANCE.Departments.Remove(department);
-                            if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
-                            {
-                                MessageBox.Show("Xóa phòng ban thành công!", "Thông báo");
-                                LoadDataDepartment();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Xóa phòng ban thất bại!", "Thông báo");
-                                return;
-                            }
-                        }
-                    }
+        //                    job.ForEach(j => { j.DepartmentId = null; });
+        //                    job.ForEach(j => ProjectPrn212Context.INSTANCE.Jobs.Update(j));
+        //                    ProjectPrn212Context.INSTANCE.Departments.Remove(department);
+        //                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+        //                    {
+        //                        MessageBox.Show("Xóa phòng ban thành công!", "Thông báo");
+        //                        LoadDataDepartment();
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Xóa phòng ban thất bại!", "Thông báo");
+        //                        return;
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (MessageBox.Show("Bạn chắc chắn muốn xóa phòng " + department.Name + " ?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        //                {
+        //                    ProjectPrn212Context.INSTANCE.Departments.Remove(department);
+        //                    if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)
+        //                    {
+        //                        MessageBox.Show("Xóa phòng ban thành công!", "Thông báo");
+        //                        LoadDataDepartment();
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Xóa phòng ban thất bại!", "Thông báo");
+        //                        return;
+        //                    }
+        //                }
+        //            }
 
 
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy phòng ban trong hệ thông!", "Thông báo");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
-                return;
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Không tìm thấy phòng ban trong hệ thông!", "Thông báo");
+        //            return;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
+        //        return;
+        //    }
+        //}
 
         private void btnAddDepartment_Click(object sender, RoutedEventArgs e)
         {
@@ -298,6 +298,13 @@ namespace ProjectPRN212
                     departmentUpdate.Name = name;
                     departmentUpdate.Description = description;
                     departmentUpdate.IsDelete = isDelete;
+                    var emOfDepa = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.DepartmentId == departmentId).ToList();
+                    foreach (var item in emOfDepa)
+                    {
+                        item.IsDelete = isDelete;
+                        item.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
+                        ProjectPrn212Context.INSTANCE.Employees.Update(item);
+                    }
                     departmentUpdate.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
                     ProjectPrn212Context.INSTANCE.Departments.Update(departmentUpdate);
                     if (ProjectPrn212Context.INSTANCE.SaveChanges() > 0)

@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -334,6 +336,21 @@ namespace ProjectPRN212
                     active = true;
                 }
 
+                if (!IsEmailFormatValid(email))
+                {
+                    MessageBox.Show("Email không hợp lệ!", "Thông báo");
+                    return;
+                }
+                if (CheckDuplicateEmail(email))
+                {
+                    MessageBox.Show("Email đã tồn tại!", "Thông báo");
+                    return;
+                }
+                if (!IsValidPhoneNumber(phone))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo");
+                    return;
+                }
                 //MessageBox.Show("Gender "+ gender + " Active:" + active);
 
                 //double salary = 0;
@@ -507,6 +524,36 @@ namespace ProjectPRN212
             }
         }
 
+        private static bool IsEmailFormatValid(string email)
+        {
+            // Biểu thức chính quy kiểm tra định dạng email phổ biến
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
+
+        private bool CheckDuplicateEmail(string email)
+        {
+            var employee = ProjectPrn212Context.INSTANCE.Employees.Where(e => e.Email.Equals(email));
+            if (employee.Any())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            if (string.IsNullOrEmpty(phoneNumber))
+            {
+                return false;
+            }
+
+            string pattern = @"^0\d{9}$";
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(phoneNumber);
+        }
 
         private void cbbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

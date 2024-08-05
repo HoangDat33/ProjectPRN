@@ -63,7 +63,6 @@
             <CheckBox x:Name="cbAllEmployee" Content="Tất cả nhân viên" FontSize="15" Width="160" Height="30" Margin="10,5,10,5" IsChecked="False" Padding="5" BorderThickness="12,8,12,8" Checked="cbAllEmployee_Checked" />
             <Button Content="Xem chi tiết" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="DetailEmployee_Click"/>
             <Button Content="Thêm mới" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="AddNewEmployee_Click" />
-            <Button Content="Xóa" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="DeleteNewEmployee_Click" />
             <Button Content="Xuất excel" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="ExportFile_Click" />
             <Button Content="Xuất json" Width="100" Height="30" FontSize="15" FontWeight="DemiBold" Margin="15,0,0,0" Click="ExportJson_Click" />
         </StackPanel>
